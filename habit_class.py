@@ -1,5 +1,4 @@
-#!/usr/bin/env python3 
-
+ 
 # habit tracker class:
 
 import requests 
@@ -26,19 +25,13 @@ class HabitTracker:
         print(response.text) 
      
     # create the graph:   
-    def create_graph(self, name, unit, type, color, timezone):
-        params = {
-            'id': self.graph_id,
-            'name': name, 
-            'unit': unit,  
-            'type': type, 
-            'color': color,
-            'timezone': timezone 
-        }
+    def create_graph(self, **kwargs):
+        
+        kwargs['id'] = self.graph_id 
         
         graph_endpoint = f'{self.pixela_endpoint}/{self.username}/graphs'
         
-        response = requests.post(url=graph_endpoint, json=params, headers=self.headers)
+        response = requests.post(url=graph_endpoint, json=kwargs, headers=self.headers)
         print(response.text)
         
     # post a pixel:
@@ -69,8 +62,8 @@ class HabitTracker:
         pixel_delete_endpoint = f'{self.pixela_endpoint}/{self.username}/graphs/{self.graph_id}/{date}'
         
         response = requests.delete(url=pixel_delete_endpoint, headers=self.headers)
-        print(response.text)    
+        print(response.text)      
         
         
         
-    
+ 
