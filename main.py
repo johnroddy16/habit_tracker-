@@ -11,8 +11,8 @@ def main():
 
     if args.create_user:
         instance.create_user() 
-    graph_kwargs = {}
     
+    graph_kwargs = {}
     if args.graph_params:
         for item in args.graph_params:
             if '=' in item:
